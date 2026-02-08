@@ -13,12 +13,7 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("email")->unique();
-            $table->text("adress");
-            $table->enum("stauts",['active','inactive'])->default("active");
-            $table->date("membership-date")->default(now());
-            $table->string("whatsApp_number")->nullable();
+            
             $table->timestamps();
         });
     }

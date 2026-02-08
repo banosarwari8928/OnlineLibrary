@@ -10,7 +10,13 @@ class Member extends Model
 {
     /** @use HasFactory<\Database\Factories\MemberFactory> */
     use HasFactory;
+    protected $fillable=[
+        "staus",
+    ];
     public function borrowing(){
-        return $this->hasOne(Borrowing::class,"id");
+        return $this->belongsTo(Borrowing::class);
+    }
+    public function activeBprrowign(){
+        // return $this->borrowing()->where("status",===,"borrowed");
     }
 }
