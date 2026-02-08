@@ -11,12 +11,20 @@ class Member extends Model
     /** @use HasFactory<\Database\Factories\MemberFactory> */
     use HasFactory;
     protected $fillable=[
+        "name",
+        "email",
+        "whatsApp_number",
+        "membership_date",
+        "adress",
         "staus",
     ];
-    public function borrowing(){
+    protected $casts = [
+        "membership_date"=>"date",
+    ];
+        public function borrowing(){
         return $this->belongsTo(Borrowing::class);
     }
-    public function activeBprrowign(){
-        // return $this->borrowing()->where("status",===,"borrowed");
+    public function activeBorrowing(){
+        return $this->borrowing()->where("status","borrowed");
     }
 }

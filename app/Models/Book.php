@@ -15,12 +15,13 @@ class Book extends Model
         "isbn",
         "disciption",
         "published_at",
-        "total-copies",
-        "availabel-copies",
+        "total_copies",
+        "availabel_copies",
         "genra",
         "price",
-        "cover-image",
-        ""
+        "cover_image",
+        "status",
+        "author_id"
 
     ];
     public function author(){
@@ -30,16 +31,16 @@ class Book extends Model
         return $this->hasMany(Borrowing::class);
     }
     public function isAvailable(){
-        return $this->availabel-copies>0;
+        return $this->availabel_copies>0;
     }
     public function borrow(){
-        if($this->availabel-copies> 0){
-            $this->decreament("available_copies");
+        if($this->availabel_copies> 0){
+            $this->decrement("availabel_copies");
         }
     }
     public function returnedBook(){
         if($this->available_copies < $this->total_copies){
-            $this->increament("available_copies");
+            $this->increment("availabel_copies");
         }
     }
 }
